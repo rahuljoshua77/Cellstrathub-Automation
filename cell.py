@@ -152,9 +152,7 @@ def sign_up(k):
     print(f'[*] [{email}] Input Script')
     print(f'[*] [{email}] Script Running!')
     wait(browser,120).until(EC.presence_of_element_located((By.XPATH, '//textarea[@aria-label="Terminal input"]'))).send_keys(Keys.ENTER)
-    print(f'[*] [{email}] Close in 15 hours!')
-    sleep(900)
-    browser.quit()
+   
 if __name__ == '__main__':
     global prefix
     global password
@@ -172,7 +170,7 @@ if __name__ == '__main__':
     list_accountsplit = akun.split()
     k = list_accountsplit
     start = time.time()
-    with Pool(len(list_accountsplit)) as p:  
+    with Pool(2) as p:  
         p.map(sign_up, k)
     end = time.time()
     print("[*] Time elapsed: ", end - start)
